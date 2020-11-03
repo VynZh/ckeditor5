@@ -38,6 +38,7 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
+import ExportWord from '@ckeditor/ckeditor5-export-word/src/exportword';
 
 export default class DecoupledEditor extends DecoupledEditorBase {}
 
@@ -74,7 +75,8 @@ DecoupledEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	ExportWord
 ];
 
 // Editor configuration.
@@ -108,7 +110,9 @@ DecoupledEditor.defaultConfig = {
 			'mediaEmbed',
 			'|',
 			'undo',
-			'redo'
+			'redo',
+			'|',
+			'exportWord'
 		]
 	},
 	image: {
@@ -131,6 +135,16 @@ DecoupledEditor.defaultConfig = {
 			'tableRow',
 			'mergeTableCells'
 		]
+	},
+	exportWord: {
+		fileName: 'my-file.docx',
+		converterOptions: {
+			format: 'A4', // Default value, you don't need to specify it explicitly for A4.
+			margin_top: '20mm',
+			margin_bottom: '20mm',
+			margin_right: '12mm',
+			margin_left: '12mm'
+		}
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
